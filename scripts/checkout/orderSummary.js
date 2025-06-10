@@ -4,6 +4,7 @@ import {formatCurrency} from '../utils/money.js';
 import {deliveryOptions, getDeliveryOption} from '../../data/deliveryOptions.js';
 import dayjs from 'https://unpkg.com/supersimpledev@8.5.0/dayjs/esm/index.js';
 import {renderPaymentSummary} from './paymentSummary.js'
+import {renderCheckoutHeader} from './checkoutHeader.js';
 
 export function renderOrderSummary() {
   let orderSummaryHTML = '';
@@ -101,8 +102,8 @@ export function renderOrderSummary() {
 
   document.querySelector('.js-order-summary').innerHTML = orderSummaryHTML;
 
-  const cartQuantity = calculateCartQuantity();
-  document.querySelector('.js-return-to-home-link').innerHTML = `${cartQuantity} items`;
+  // const cartQuantity = calculateCartQuantity();
+  // document.querySelector('.js-return-to-home-link').innerHTML = `${cartQuantity} items`;
 
   document.querySelectorAll('.js-delete-link').forEach((link) => {
     link.addEventListener('click', () => {
@@ -122,8 +123,9 @@ export function renderOrderSummary() {
       // document.querySelector(`.js-cart-item-container-${productId}`).remove();
       renderOrderSummary();
 
-      const cartQuantity = calculateCartQuantity();
-      document.querySelector('.js-return-to-home-link').innerHTML = `${cartQuantity} items`;
+      // const cartQuantity = calculateCartQuantity();
+      // document.querySelector('.js-return-to-home-link').innerHTML = `${cartQuantity} items`;
+      renderCheckoutHeader();
 
       renderPaymentSummary();
     });
@@ -150,8 +152,9 @@ export function renderOrderSummary() {
 
       document.querySelector(`.js-cart-item-container-${productId}`).classList.remove('is-editing-quantity');
 
-      const cartQuantity = calculateCartQuantity();
-      document.querySelector('.js-return-to-home-link').innerHTML = `${cartQuantity} items`;
+      // const cartQuantity = calculateCartQuantity();
+      // document.querySelector('.js-return-to-home-link').innerHTML = `${cartQuantity} items`;
+      renderCheckoutHeader();
 
       renderPaymentSummary();
     });
