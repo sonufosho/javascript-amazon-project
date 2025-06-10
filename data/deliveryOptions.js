@@ -29,9 +29,19 @@ export function getDeliveryOption(deliveryOptionId) {
 }
 
 export function calculateDeliveryDate(deliveryOption) {
-  const today = dayjs();
-  const deliveryDate = today.add(deliveryOption.deliveryDays, 'days');
-  const dateString = deliveryDate.format('dddd, MMMM D');
+  let today = dayjs();
+  
+  let remainingDays = deliveryOption.deliveryDays;
 
+  while (remainingDays > 0) {
+    today = today.add(1, 'day');
+
+    if (today.format('dddd') !== 'Saturday' && today.format('dddd') !== 'Sunday') {
+      remainingDays--;
+    }
+  }
+
+  const dateString = today.format('dddd, MMMM D');
+  
   return dateString;
 }
