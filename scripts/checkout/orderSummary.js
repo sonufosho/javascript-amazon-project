@@ -119,7 +119,8 @@ export function renderOrderSummary() {
       
       removeFromCart(productId);
 
-      document.querySelector(`.js-cart-item-container-${productId}`).remove();
+      // document.querySelector(`.js-cart-item-container-${productId}`).remove();
+      renderOrderSummary();
 
       const cartQuantity = calculateCartQuantity();
       document.querySelector('.js-return-to-home-link').innerHTML = `${cartQuantity} items`;
