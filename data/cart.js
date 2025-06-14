@@ -93,6 +93,7 @@ export function updateDeliveryOption(productId, deliveryOptionId) {
   saveToStorage();
 }
 
+/*
 export function loadCart(fun) {
   const xhr = new XMLHttpRequest();
 
@@ -103,4 +104,14 @@ export function loadCart(fun) {
 
   xhr.open('GET', 'https://supersimplebackend.dev/cart');
   xhr.send();
+}
+  */
+
+export async function loadCartFetch() {
+  const response = await fetch('https://supersimplebackend.dev/cart');
+  const text = await response.text();
+
+  console.log(text);
+
+  return text;
 }
