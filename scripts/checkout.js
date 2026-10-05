@@ -108,3 +108,12 @@ document.querySelectorAll('.js-delete-quantity-link')
         .remove();
     });
   });
+
+let cartQuantity = 0;
+
+cart.forEach((cartItem) => {
+  cartQuantity += cartItem.quantity;
+});
+
+document.querySelector('.js-return-to-home-link')
+  .innerHTML = `${cartQuantity} items`;
