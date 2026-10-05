@@ -70,6 +70,8 @@ function updateCartQuantity() {
   document.querySelector('.js-cart-quantity')
     .innerHTML = cartQuantity;
 }
+
+updateCartQuantity();
   
 document.querySelectorAll('.js-add-to-cart-button')
   .forEach((button) => {
