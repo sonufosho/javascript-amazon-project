@@ -115,9 +115,7 @@ export function renderOrderSummary() {
   
         deleteFromCart(productId);
   
-        document.querySelector(`.js-cart-item-container-${productId}`)
-          .remove();
-  
+        renderOrderSummary();
         updateCartQuantity();
         renderPaymentSummary();
       });
