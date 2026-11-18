@@ -56,7 +56,7 @@ describe('test suite: renderOrderSummary', () => {
     ).toEqual('$20.95');
   });
 
-  it('removes a product from the cart', () => {
+  it('removes a product', () => {
     document.querySelector(`.js-delete-quantity-link-${productId1}`).click();
     expect(
       document.querySelectorAll('.js-cart-item-container').length
