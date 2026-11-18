@@ -1,4 +1,4 @@
-import formatMoney from '../scripts/utils/formatMoney.js';
+import formatMoney from '../../scripts/utils/formatMoney.js';
 
 // test suite
 console.log('test suite: formatMoney');
