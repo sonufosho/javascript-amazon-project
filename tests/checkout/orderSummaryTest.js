@@ -32,6 +32,10 @@ describe('test suite: renderOrderSummary', () => {
     renderOrderSummary();
   });
 
+  afterEach(() => {
+    document.querySelector('.js-test-container').innerHTML = '';
+  });
+
   it('displays the cart', () => {
     expect(
       document.querySelectorAll('.js-cart-item-container').length
@@ -77,7 +81,22 @@ describe('test suite: renderOrderSummary', () => {
     expect(cart[0].productId).toEqual(productId2);
   });
 
-  afterEach(() => {
-    document.querySelector('.js-test-container').innerHTML = '';
+  it('updates the delivery option', () => {
+    document.querySelector(`.js-delivery-option-${productId1}-3`).click();
+
+    expect(
+      document.querySelector(`.js-delivery-option-input-${productId1}-3`).checked
+    ).toEqual(true);
+
+    expect(cart.length).toEqual(2);
+    expect(cart[0].productId).toEqual(productId1);
+    expect(cart[0].deliveryOptionId).toEqual('3');
+
+    expect(
+      document.querySelector(`.js-payment-summary-shipping`).innerText
+    ).toEqual('$14.98');
+    expect(
+      document.querySelector(`.js-payment-summary-total`).innerText
+    ).toEqual('$63.50');
   });
 });
